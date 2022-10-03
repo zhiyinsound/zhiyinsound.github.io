@@ -1,0 +1,599 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>hsbyg</title>
+</head>
+<body class='typora-export os-windows typora-export-show-outline typora-export-no-collapse-outline'><div class='typora-export-content'>
+<div class="typora-export-sidebar"><div class="outline-content"><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#红烧白月光">红烧白月光</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2022-09-26-蒲郭触-·-交">2022-09-26 【蒲郭】触 · 交</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2022-09-06-带球跑7太对了哥">2022-09-06 带球跑【7】太对了哥</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2022-08-31-郭蒲球の诱惑">2022-08-31 【郭蒲】球の诱惑</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2022-08-26-巨大彩蛋之超能力者xx记">2022-08-26 巨大彩蛋之超能力者xx记</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2022-08-11-南北shiny-spring含食色系列补挡">2022-08-11 【南北】Shiny Spring【含食色系列补挡】</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2022-07-29-all齐狐狸新娘">2022-07-29 【All齐】狐狸新娘</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2022-07-24-四人家庭❀完全体">2022-07-24 四人家庭❀完全体！</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2022-07-17-addict03三权分立">2022-07-17 Addict【03】三权分立</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2022-06-29-addict2无效审判">2022-06-29 Addict【2】无效审判</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2022-06-27-addict1主观故犯">2022-06-27 Addict【1】主观故犯</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2022-06-20-alpha没一个好东西爸爸们的婚礼-蒲郭片段">2022-06-20 Alpha没一个好东西！【爸爸们的婚礼】-蒲郭片段</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2022-06-13-郭蒲暑假与蒲鱼饺子与男大学生">2022-06-13 【郭蒲】暑假与蒲鱼饺子与男大学生</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2022-05-27-蒲郭桃花潮">2022-05-27 【蒲郭】桃花潮</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2022-05-12-蒲郭入雨含珠">2022-05-12 【蒲郭】入雨+含珠</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2022-05-09-all齐周老师的实验教具">2022-05-09 【All齐】周老师的实验教具</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2022-05-04-蜜浮酥酪花">2022-05-04 蜜浮酥酪花</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2022-04-30-纬钧南北四人家庭补">2022-04-30 【纬钧南北】四人家庭【补】</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2022-04-27-蒲郭纬钧恩何封--校--日--记">2022-04-27 【蒲郭/纬钧/恩何】封 | 校 | 日 | 记</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2022-04-20-蒲郭隔离猫会梦见小寿桃吗">2022-04-20 【蒲郭】隔离猫会梦见小寿桃吗？</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2022-04-15-alpha没一个好东西超级混蛋大坏狗">2022-04-15 Alpha没一个好东西！【超级混蛋大坏狗】</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2022-04-10-郭蒲郭桃花糕">2022-04-10 【郭蒲郭】桃花糕</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2022-03-31-十全大补下）">2022-03-31 十全大补（下）</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2022-03-30-十全大补上）">2022-03-30 十全大补（上）</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2022-03-27-蒲郭纬钧南北隔离十四天">2022-03-27 【蒲郭/纬钧/南北】隔离十四天</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2022-03-20-四人恩纬钧大富翁">2022-03-20 四人+恩纬钧+大富翁</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2022-03-20-换镜10202125">2022-03-20 换镜【10】【20】【21】【25】</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2022-03-17-alpha没一个好东西--所有">2022-03-17 Alpha没一个好东西！- 所有</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2022-03-15-alpha没一个好东西大学生">2022-03-15 Alpha没一个好东西！【大学生】</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2021-01-04-南北终相救">2021-01-04 【南北】终相救</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2020-12-14-食色系列2whisky-kitty">2020-12-14 食色系列【2】Whisky Kitty</a></div><ul class="outline-children"></ul></li></ul></li></div></div><div id='write'  class=''><h1 id='红烧白月光'><span>红烧白月光</span></h1><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" href="#红烧白月光">红烧白月光</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n3"><a class="md-toc-inner" href="#2022-09-26-蒲郭触-·-交">2022-09-26 【蒲郭】触 · 交</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n8"><a class="md-toc-inner" href="#2022-09-06-带球跑7太对了哥">2022-09-06 带球跑【7】太对了哥</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n13"><a class="md-toc-inner" href="#2022-08-31-郭蒲球の诱惑">2022-08-31 【郭蒲】球の诱惑</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n18"><a class="md-toc-inner" href="#2022-08-26-巨大彩蛋之超能力者xx记">2022-08-26 巨大彩蛋之超能力者xx记</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n23"><a class="md-toc-inner" href="#2022-08-11-南北shiny-spring含食色系列补挡">2022-08-11 【南北】Shiny Spring【含食色系列补挡】</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n40"><a class="md-toc-inner" href="#2022-07-29-all齐狐狸新娘">2022-07-29 【All齐】狐狸新娘</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n45"><a class="md-toc-inner" href="#2022-07-24-四人家庭❀完全体">2022-07-24 四人家庭❀完全体！</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n49"><a class="md-toc-inner" href="#2022-07-17-addict03三权分立">2022-07-17 Addict【03】三权分立</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n54"><a class="md-toc-inner" href="#2022-06-29-addict2无效审判">2022-06-29 Addict【2】无效审判</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n59"><a class="md-toc-inner" href="#2022-06-27-addict1主观故犯">2022-06-27 Addict【1】主观故犯</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n66"><a class="md-toc-inner" href="#2022-06-20-alpha没一个好东西爸爸们的婚礼-蒲郭片段">2022-06-20 Alpha没一个好东西！【爸爸们的婚礼】-蒲郭片段</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n71"><a class="md-toc-inner" href="#2022-06-13-郭蒲暑假与蒲鱼饺子与男大学生">2022-06-13 【郭蒲】暑假与蒲鱼饺子与男大学生</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n76"><a class="md-toc-inner" href="#2022-05-27-蒲郭桃花潮">2022-05-27 【蒲郭】桃花潮</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n81"><a class="md-toc-inner" href="#2022-05-12-蒲郭入雨含珠">2022-05-12 【蒲郭】入雨+含珠</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n87"><a class="md-toc-inner" href="#2022-05-09-all齐周老师的实验教具">2022-05-09 【All齐】周老师的实验教具</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n91"><a class="md-toc-inner" href="#2022-05-04-蜜浮酥酪花">2022-05-04 蜜浮酥酪花</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n96"><a class="md-toc-inner" href="#2022-04-30-纬钧南北四人家庭补">2022-04-30 【纬钧南北】四人家庭【补】</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n107"><a class="md-toc-inner" href="#2022-04-27-蒲郭纬钧恩何封--校--日--记">2022-04-27 【蒲郭/纬钧/恩何】封 | 校 | 日 | 记</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n112"><a class="md-toc-inner" href="#2022-04-20-蒲郭隔离猫会梦见小寿桃吗">2022-04-20 【蒲郭】隔离猫会梦见小寿桃吗？</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n117"><a class="md-toc-inner" href="#2022-04-15-alpha没一个好东西超级混蛋大坏狗">2022-04-15 Alpha没一个好东西！【超级混蛋大坏狗】</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n122"><a class="md-toc-inner" href="#2022-04-10-郭蒲郭桃花糕">2022-04-10 【郭蒲郭】桃花糕</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n127"><a class="md-toc-inner" href="#2022-03-31-十全大补下）">2022-03-31 十全大补（下）</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n165"><a class="md-toc-inner" href="#2022-03-30-十全大补上）">2022-03-30 十全大补（上）</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n197"><a class="md-toc-inner" href="#2022-03-27-蒲郭纬钧南北隔离十四天">2022-03-27 【蒲郭/纬钧/南北】隔离十四天</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n203"><a class="md-toc-inner" href="#2022-03-20-四人恩纬钧大富翁">2022-03-20 四人+恩纬钧+大富翁</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n207"><a class="md-toc-inner" href="#2022-03-20-换镜10202125">2022-03-20 换镜【10】【20】【21】【25】</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n213"><a class="md-toc-inner" href="#2022-03-17-alpha没一个好东西--所有">2022-03-17 Alpha没一个好东西！- 所有</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n217"><a class="md-toc-inner" href="#2022-03-15-alpha没一个好东西大学生">2022-03-15 Alpha没一个好东西！【大学生】</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n222"><a class="md-toc-inner" href="#2021-01-04-南北终相救">2021-01-04 【南北】终相救</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n319"><a class="md-toc-inner" href="#2020-12-14-食色系列2whisky-kitty">2020-12-14 食色系列【2】Whisky Kitty</a></span></p></div><h2 id='2022-09-26-蒲郭触-·-交'><span>2022-09-26 【蒲郭】触 · 交</span></h2><p><span>全文：</span></p><p><img src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_auto/7097793/454164_11698.jpeg" referrerpolicy="no-referrer"></p><p><span>备用：</span><a href='https://static.wixstatic.com/media/9c04bc_cdbf7ede42be479ca894e5fbf212b1c2~mv2.jpg' target='_blank' class='url'>https://static.wixstatic.com/media/9c04bc_cdbf7ede42be479ca894e5fbf212b1c2~mv2.jpg</a></p><br><h2 id='2022-09-06-带球跑7太对了哥'><span>2022-09-06 带球跑【7】太对了哥</span></h2><p><span>正文：</span></p><p><img src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_auto/7097793/135868_47531.jpeg" referrerpolicy="no-referrer"></p><p><span>备用：</span><a href='https://static.wixstatic.com/media/9c04bc_8941745cbae7472291c801bb832b2319~mv2.jpg' target='_blank' class='url'>https://static.wixstatic.com/media/9c04bc_8941745cbae7472291c801bb832b2319~mv2.jpg</a></p><br><h2 id='2022-08-31-郭蒲球の诱惑'><span>2022-08-31 【郭蒲】球の诱惑</span></h2><p><span>全文：</span></p><p><img src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_auto/7097793/432746_555392.jpeg" referrerpolicy="no-referrer"></p><p><span>备用：</span><a href='https://static.wixstatic.com/media/9c04bc_c0b68cc8a44943349aa031f7cb1e00e3~mv2.jpg' target='_blank' class='url'>https://static.wixstatic.com/media/9c04bc_c0b68cc8a44943349aa031f7cb1e00e3~mv2.jpg</a></p><br><h2 id='2022-08-26-巨大彩蛋之超能力者xx记'><span>2022-08-26 巨大彩蛋之超能力者xx记</span></h2><p><span>全文：</span></p><p><img src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_auto/7097793/35530_224118.jpeg" referrerpolicy="no-referrer"></p><p><span>备用：</span><a href='https://static.wixstatic.com/media/9c04bc_7d98ea9a8cd8408bbb6ee1cf76167dc2~mv2.jpg' target='_blank' class='url'>https://static.wixstatic.com/media/9c04bc_7d98ea9a8cd8408bbb6ee1cf76167dc2~mv2.jpg</a></p><br><h2 id='2022-08-11-南北shiny-spring含食色系列补挡'><span>2022-08-11 【南北】Shiny Spring【含食色系列补挡】</span></h2><p><span>全文：</span></p><p><img src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_auto/7097793/823791_92905.jpeg" referrerpolicy="no-referrer"></p><p><span>备用：</span><a href='https://static.wixstatic.com/media/9c04bc_5bca9ea7d5c04fcdbb4c1e5c862e7181~mv2.jpg' target='_blank' class='url'>https://static.wixstatic.com/media/9c04bc_5bca9ea7d5c04fcdbb4c1e5c862e7181~mv2.jpg</a></p><p><span>【纬钧】Juicy Peach</span></p><p><img src="https://static.wixstatic.com/media/9c04bc_c247ac71bb754630a7380afbca8d4bba~mv2.png" referrerpolicy="no-referrer"></p><p><span>【纬钧/南北】Crispy Berry</span></p><p><img src="https://static.wixstatic.com/media/9c04bc_c173ea378f934f65b4e5bff77586809b~mv2.png" referrerpolicy="no-referrer"></p><p><span>【纬钧】Creamy Cheese</span></p><p><img src="https://static.wixstatic.com/media/9c04bc_b46bdd162f7045c3b5a6780926a649ea~mv2.png" referrerpolicy="no-referrer"></p><p><span>【南北】Hungry Lunch</span></p><p><img src="https://static.wixstatic.com/media/9c04bc_6d4d92d2581c46cc8a67c01800761283~mv2.png" referrerpolicy="no-referrer"></p><p><span>【纬钧】Busy break</span></p><p><img src="https://static.wixstatic.com/media/9c04bc_88a36778d0394d37a375321f4443f441~mv2.png" referrerpolicy="no-referrer"></p><p><span>【纬钧】Rainy Day</span></p><p><img src="https://static.wixstatic.com/media/9c04bc_3e6e3e71af294ec3bb0c106037b52288~mv2.png" referrerpolicy="no-referrer"></p><br><h2 id='2022-07-29-all齐狐狸新娘'><span>2022-07-29 【All齐】狐狸新娘</span></h2><p><span>全文：</span></p><p><img src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_auto/7097793/82638_968012.jpeg" referrerpolicy="no-referrer"></p><p><span>备用：</span><a href='https://static.wixstatic.com/media/9c04bc_69e9ffae49f34ed6ac3b0119c71ea08b~mv2.jpg' target='_blank' class='url'>https://static.wixstatic.com/media/9c04bc_69e9ffae49f34ed6ac3b0119c71ea08b~mv2.jpg</a></p><br><h2 id='2022-07-24-四人家庭❀完全体'><span>2022-07-24 四人家庭❀完全体！</span></h2><p><span>全文：</span></p><p><a href='http://9c04bc7f-cf6d-4e5c-9046-6fddc04032e2.usrfiles.com/ugd/9c04bc_a2c33e43476744c89d7aca4faef64d59.pdf' target='_blank' class='url'>http://9c04bc7f-cf6d-4e5c-9046-6fddc04032e2.usrfiles.com/ugd/9c04bc_a2c33e43476744c89d7aca4faef64d59.pdf</a></p><br><h2 id='2022-07-17-addict03三权分立'><span>2022-07-17 Addict【03】三权分立</span></h2><p><span>全文：</span></p><p><img src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_auto/7097793/871303_140466.jpeg" referrerpolicy="no-referrer"></p><p><span>备用：</span><a href='https://static.wixstatic.com/media/9c04bc_751422f2d46e419988c2e646359a9273~mv2.jpg' target='_blank' class='url'>https://static.wixstatic.com/media/9c04bc_751422f2d46e419988c2e646359a9273~mv2.jpg</a></p><br><h2 id='2022-06-29-addict2无效审判'><span>2022-06-29 Addict【2】无效审判</span></h2><p><span>全文：</span></p><p><img src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_auto/7097793/766784_167902.jpeg" referrerpolicy="no-referrer"></p><p><span>备用：</span><a href='https://static.wixstatic.com/media/9c04bc_85c76d6cbd74489294e72464b19ed22a~mv2.jpg' target='_blank' class='url'>https://static.wixstatic.com/media/9c04bc_85c76d6cbd74489294e72464b19ed22a~mv2.jpg</a></p><br><h2 id='2022-06-27-addict1主观故犯'><span>2022-06-27 Addict【1】主观故犯</span></h2><p><span>全文：</span></p><p><img src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_auto/7097793/550338_512521.jpeg" referrerpolicy="no-referrer"></p><p><span>涉车片段：（全文太长有点模糊，片段比较清晰）</span></p><p><img src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_auto/7097793/334976_698416.jpeg" referrerpolicy="no-referrer"></p><p><span>备用：（全文）</span><a href='https://static.wixstatic.com/media/9c04bc_e9e758b4a66c435ba048365cb2718669~mv2.jpg' target='_blank' class='url'>https://static.wixstatic.com/media/9c04bc_e9e758b4a66c435ba048365cb2718669~mv2.jpg</a></p><br><h2 id='2022-06-20-alpha没一个好东西爸爸们的婚礼-蒲郭片段'><span>2022-06-20 Alpha没一个好东西！【爸爸们的婚礼】-蒲郭片段</span></h2><p><span>全文：</span></p><p><img src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_auto/7097793/14523_885872.jpeg" referrerpolicy="no-referrer"></p><p><span>备用：</span><a href='https://static.wixstatic.com/media/9c04bc_0f4e2da6d4e7457d9d680625903996c0~mv2.jpg' target='_blank' class='url'>https://static.wixstatic.com/media/9c04bc_0f4e2da6d4e7457d9d680625903996c0~mv2.jpg</a></p><br><h2 id='2022-06-13-郭蒲暑假与蒲鱼饺子与男大学生'><span>2022-06-13 【郭蒲】暑假与蒲鱼饺子与男大学生</span></h2><p><span>全文：</span></p><p><img src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_auto/7097793/168194_772963.jpeg" referrerpolicy="no-referrer"></p><p><span>备用：</span><a href='https://static.wixstatic.com/media/9c04bc_e17b85c9365c43dc9179509adc24b71f~mv2.jpg' target='_blank' class='url'>https://static.wixstatic.com/media/9c04bc_e17b85c9365c43dc9179509adc24b71f~mv2.jpg</a></p><br><h2 id='2022-05-27-蒲郭桃花潮'><span>2022-05-27 【蒲郭】桃花潮</span></h2><p><span>全文：</span></p><p><img src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_auto/7097793/577930_22953.jpeg" referrerpolicy="no-referrer"></p><p><span>备用：</span><a href='https://static.wixstatic.com/media/9c04bc_ed91332462f6405485ba1400a5fd6ce2~mv2.jpg' target='_blank' class='url'>https://static.wixstatic.com/media/9c04bc_ed91332462f6405485ba1400a5fd6ce2~mv2.jpg</a></p><br><h2 id='2022-05-12-蒲郭入雨含珠'><span>2022-05-12 【蒲郭】入雨+含珠</span></h2><p><span>全文：</span></p><p><img src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_auto/7097793/81823_775340.jpeg" referrerpolicy="no-referrer"></p><p><span>含珠：</span></p><p><img src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_auto/7097793/657581_502083.jpeg" referrerpolicy="no-referrer"></p><br><h2 id='2022-05-09-all齐周老师的实验教具'><span>2022-05-09 【All齐】周老师的实验教具</span></h2><p><span>全文（尽量用chrome开）：</span></p><p><img src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_auto/7097793/817519_176265.jpeg" referrerpolicy="no-referrer"></p><br><h2 id='2022-05-04-蜜浮酥酪花'><span>2022-05-04 蜜浮酥酪花</span></h2><p><span>打开前请先看lof本文的背景设定！注意避雷嗷！</span></p><p><span>全文：</span></p><p><img src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_auto/7097793/241230_236976.jpeg" referrerpolicy="no-referrer"></p><br><h2 id='2022-04-30-纬钧南北四人家庭补'><span>2022-04-30 【纬钧南北】四人家庭【补】</span></h2><p><span>包括：</span></p><p><span>（2）-（3）南北/纬钧下棋篇</span></p><p><span>（7）钧纬专场</span></p><p><span>（11）南纬受难日</span></p><p><span>（13）南北纬鬼片专场</span></p><p><span>其他章节见十全大补（上） </span></p><p><span>全文：</span></p><p><a href='https://static.s123-cdn-static-d.com/uploads/5985551/normal_626cf91c145f6.pdf' target='_blank' class='url'>https://static.s123-cdn-static-d.com/uploads/5985551/normal_626cf91c145f6.pdf</a></p><p><span>备用：</span><a href='http://9c04bc7f-cf6d-4e5c-9046-6fddc04032e2.usrfiles.com/ugd/9c04bc_42e905dccdda4c92b1562e65ae8367fa.pdf' target='_blank' class='url'>http://9c04bc7f-cf6d-4e5c-9046-6fddc04032e2.usrfiles.com/ugd/9c04bc_42e905dccdda4c92b1562e65ae8367fa.pdf</a></p><br><h2 id='2022-04-27-蒲郭纬钧恩何封--校--日--记'><span>2022-04-27 【蒲郭/纬钧/恩何】封 | 校 | 日 | 记</span></h2><p><span>全文：</span></p><p><img src="https://static.s123-cdn-static-d.com/uploads/5985551/2000_6269359203491.jpg" referrerpolicy="no-referrer"></p><p><span>备用：</span><a href='https://static.wixstatic.com/media/9c04bc_253d91d69c924c249446d8fdc42884c4~mv2.jpg' target='_blank' class='url'>https://static.wixstatic.com/media/9c04bc_253d91d69c924c249446d8fdc42884c4~mv2.jpg</a></p><br><h2 id='2022-04-20-蒲郭隔离猫会梦见小寿桃吗'><span>2022-04-20 【蒲郭】隔离猫会梦见小寿桃吗？</span></h2><p><span>全文：</span></p><p><img src="https://static.s123-cdn-static-d.com/uploads/5985551/2000_625fde6aa6246.jpg" referrerpolicy="no-referrer"></p><p><span>备用：</span><a href='https://static.wixstatic.com/media/9c04bc_46b569b3550d4320ac5503429502836a~mv2.jpg' target='_blank' class='url'>https://static.wixstatic.com/media/9c04bc_46b569b3550d4320ac5503429502836a~mv2.jpg</a></p><br><h2 id='2022-04-15-alpha没一个好东西超级混蛋大坏狗'><span>2022-04-15 Alpha没一个好东西！【超级混蛋大坏狗】</span></h2><p><span>全文：</span></p><p><img src="https://static.s123-cdn-static-d.com/uploads/5985551/2000_625951af1f7ad.jpg" referrerpolicy="no-referrer"></p><p><span>备用：</span><a href='https://static.wixstatic.com/media/9c04bc_9ca4931c9d7a45f3b3cf9150461c2f5b~mv2.jpg' target='_blank' class='url'>https://static.wixstatic.com/media/9c04bc_9ca4931c9d7a45f3b3cf9150461c2f5b~mv2.jpg</a></p><br><h2 id='2022-04-10-郭蒲郭桃花糕'><span>2022-04-10 【郭蒲郭】桃花糕</span></h2><p><span>全文：</span></p><p><img src="https://static.s123-cdn-static-d.com/uploads/5985551/2000_6252f9f79f9bb.png" referrerpolicy="no-referrer"></p><p><span>备用：</span><a href='https://static.wixstatic.com/media/9c04bc_67af8b21dc2147f49f0a62bbf6b0e752~mv2.png' target='_blank' class='url'>https://static.wixstatic.com/media/9c04bc_67af8b21dc2147f49f0a62bbf6b0e752~mv2.png</a></p><br><h2 id='2022-03-31-十全大补下）'><span>2022-03-31 十全大补（下）</span></h2><p><span>换镜</span></p><p><span>木有枝</span></p><p><span>【蒲郭】会议桌上能看到烟花吗：</span></p><p><span>【郭蒲】一日老板：</span></p><p><span>【蒲郭】木有枝 · 吃桃：</span></p><p><span>【郭蒲】木有枝 · 桃吃：</span></p><p><span>大富翁+地图</span></p><p><span>篮球篇</span></p><p><span>【郭蒲】哥哥加油：</span></p><p><span>【纬钧】主场作战：</span></p><p><span>【恩何】骑开得胜</span></p><p><span>一些生贺</span></p><p><span>【纬钧】生日齐快乐1</span></p><p><span>【纬钧】生日齐快乐2</span></p><p><span>【钧纬】贺新郎：</span></p><p><span>【恩何】双流入河：</span></p><p><span>【郭蒲】归剑入鞘：</span></p><p><span>【蒲郭】解题解得好，吃肉没烦恼</span></p><p><span>散篇</span></p><p><span>【纬钧】Savage:</span></p><p><span>【蒲郭】听说冬天和易感期更配哦</span></p><p><span>【纬钧/恩何】美狐成双：</span></p><p><span>【郭蒲】夜半搜证：</span></p><p><span>【纬钧】山间民宿：</span></p><p><span>【纬钧】巧克力与烛光晚餐：</span></p><p><span>【纬钧/蒲郭】野巜合：</span></p><p><span>【纬钧】雨水多水：</span></p><p><span>【蒲郭】染春：</span></p><p><span>【纬钧/蒲郭】醋溜双A：</span></p><p><span>【纬钧】阳光，花丛，小白兔：</span></p><p><span>【纬钧/蒲郭】办公桌下：</span></p><p><span>【钧纬】养猫这件小事：</span></p><p><span>【All齐】男宿的镜子为何这么大：</span></p><p><span>【北纬】父慈子叫：</span></p><p><span>以上所有：</span><a href='https://static.s123-cdn-static-c.com/uploads/5985551/normal_6243d56fd05b4.docx' target='_blank' class='url'>https://static.s123-cdn-static-c.com/uploads/5985551/normal_6243d56fd05b4.docx</a></p><p><span>备个用：</span><a href='http://9c04bc7f-cf6d-4e5c-9046-6fddc04032e2.usrfiles.com/ugd/9c04bc_dd9da4d84e724c06b1188584692d6000.docx' target='_blank' class='url'>http://9c04bc7f-cf6d-4e5c-9046-6fddc04032e2.usrfiles.com/ugd/9c04bc_dd9da4d84e724c06b1188584692d6000.docx</a></p><br><h2 id='2022-03-30-十全大补上）'><span>2022-03-30 十全大补（上）</span></h2><p><span>四人家庭系列</span></p><p><span>N周N齐系列</span></p><p><span>恩纬钧极圈系列</span></p><p><span>单巜性巜转+孕巜期</span></p><p><span>【纬钧】囚月亮：</span></p><p><span>【郭蒲】怀玉珠：</span></p><p><span>【纬钧】避雨不避云：</span></p><p><span>【钧纬钧】前后夹击：</span></p><p><span>【纬钧/南北】圣诞树下的琉璃与火</span></p><p><span>食色杏巜转系列</span></p><p><span>游戏/S那个P系列</span></p><p><span>【纬钧】主任游戏：</span></p><p><span>【钧纬】侦探游戏：</span></p><p><span>【钧纬】恶魔游戏：</span></p><p><span>【纬钧】纹我：</span></p><p><span>【纬钧】Spicy fox：</span></p><p><span>【郭蒲】炸毛猫猫疗愈录：</span></p><p><span>【郭蒲】别生气嘛：</span></p><p><span>【蒲郭】水桃子：</span></p><p><span>【蒲郭】回锅桃肉：</span></p><p><span>【蒲郭】赌徒：</span></p><p><span>【恩何】酒酿圆子：</span></p><p><span>【恩何】还敢躲？</span></p><p><span>【纬钧/蒲郭】最高优先级：</span></p><p><span>真现实向</span></p><p><span>【纬钧】为铜：</span></p><p><span>【蒲郭】饲雪：</span></p><p><span>【蒲郭】野草：</span></p><p><span>以上所有：</span><a href='https://static.s123-cdn-static-c.com/uploads/5985551/normal_6243d56777daf.docx' target='_blank' class='url'>https://static.s123-cdn-static-c.com/uploads/5985551/normal_6243d56777daf.docx</a></p><p><span>备用：</span><a href='http://9c04bc7f-cf6d-4e5c-9046-6fddc04032e2.usrfiles.com/ugd/9c04bc_2de79103641a4e23adf94d4df7930fb9.docx' target='_blank' class='url'>http://9c04bc7f-cf6d-4e5c-9046-6fddc04032e2.usrfiles.com/ugd/9c04bc_2de79103641a4e23adf94d4df7930fb9.docx</a></p><br><h2 id='2022-03-27-蒲郭纬钧南北隔离十四天'><span>2022-03-27 【蒲郭/纬钧/南北】隔离十四天</span></h2><p><span>全文：</span></p><p><img src="https://static.s123-cdn-static-c.com/uploads/5985551/2000_62405b8af3da4.png" referrerpolicy="no-referrer"></p><p><span>备用：</span></p><p><a href='https://static.wixstatic.com/media/9c04bc_6e7825d49d7f436bb64f67e1b55115a5~mv2.png' target='_blank' class='url'>https://static.wixstatic.com/media/9c04bc_6e7825d49d7f436bb64f67e1b55115a5~mv2.png</a></p><br><h2 id='2022-03-20-四人恩纬钧大富翁'><span>2022-03-20 四人+恩纬钧+大富翁</span></h2><p><span>第一个：</span><a href='https://static.s123-cdn-static-c.com/uploads/5985551/normal_6236b607e35af.pdf' target='_blank' class='url'>https://static.s123-cdn-static-c.com/uploads/5985551/normal_6236b607e35af.pdf</a></p><p><span>第二个：</span><a href='http://9c04bc7f-cf6d-4e5c-9046-6fddc04032e2.usrfiles.com/ugd/9c04bc_51ab9a7d302d40aab5fc35654a29b86a.pdf' target='_blank' class='url'>http://9c04bc7f-cf6d-4e5c-9046-6fddc04032e2.usrfiles.com/ugd/9c04bc_51ab9a7d302d40aab5fc35654a29b86a.pdf</a></p><br><h2 id='2022-03-20-换镜10202125'><span>2022-03-20 换镜【10】【20】【21】【25】</span></h2><p><span>第一：</span></p><p><a href='https://static.s123-cdn-static-c.com/uploads/5985551/normal_623609ab66266.pdf' target='_blank' class='url'>https://static.s123-cdn-static-c.com/uploads/5985551/normal_623609ab66266.pdf</a></p><p><span>备用：</span></p><p><a href='http://9c04bc7f-cf6d-4e5c-9046-6fddc04032e2.usrfiles.com/ugd/9c04bc_218f9a961a084057a53b768c9e60ddb4.pdf' target='_blank' class='url'>http://9c04bc7f-cf6d-4e5c-9046-6fddc04032e2.usrfiles.com/ugd/9c04bc_218f9a961a084057a53b768c9e60ddb4.pdf</a></p><br><h2 id='2022-03-17-alpha没一个好东西--所有'><span>2022-03-17 Alpha没一个好东西！- 所有</span></h2><p><span>第一花：</span><a href='https://static.s123-cdn-static-c.com/uploads/5985551/normal_6232b9c7ebaa8.pdf' target='_blank' class='url'>https://static.s123-cdn-static-c.com/uploads/5985551/normal_6232b9c7ebaa8.pdf</a></p><p><span>第二花：</span><a href='http://9c04bc7f-cf6d-4e5c-9046-6fddc04032e2.usrfiles.com/ugd/9c04bc_5c62e70fb9ac4ea9a037c1da543d2f24.pdf' target='_blank' class='url'>http://9c04bc7f-cf6d-4e5c-9046-6fddc04032e2.usrfiles.com/ugd/9c04bc_5c62e70fb9ac4ea9a037c1da543d2f24.pdf</a></p><br><h2 id='2022-03-15-alpha没一个好东西大学生'><span>2022-03-15 Alpha没一个好东西！【大学生】</span></h2><p><span>（之前的很多被瓶了，等我研究一下怎么搞……）</span></p><p><span>全文：</span></p><p><img src="https://static.s123-cdn-static-c.com/uploads/5985551/2000_62307211382a9.png" referrerpolicy="no-referrer"></p><p><span>备用：</span><a href='https://static.wixstatic.com/media/9c04bc_d68e9e1f0e7b44fc8f03fbebdcbb8339~mv2.png' target='_blank' class='url'>https://static.wixstatic.com/media/9c04bc_d68e9e1f0e7b44fc8f03fbebdcbb8339~mv2.png</a></p><h2 id='2021-01-04-南北终相救'><span>2021-01-04 【南北】终相救</span></h2><p><span>蒲熠星是在离开霄云大酒店的第二年认识郭文韬的。</span></p><p><span>郭文韬是一个普通人。他很聪明，但不复杂。他和以前的郝妹妹一样，擅长数学，精通逻辑。但他足够幸运，这些在他的世界里仅是作为游戏的娱乐，缜密的逻辑聪明的头脑，不需要用来杀人、逃离。</span></p><p><span>郭文韬对他表白的那一刻他整个人是僵住的。像是强光照进了黑暗已久的鼹鼠洞，他眩晕、呆滞、冒冷汗，嘴唇颤抖着一句话都说不出来，除了转身就跑没有任何办法。优秀单纯的男孩困惑又伤心地捧着他的玫瑰花，失落地挠挠头，垂头丧气地站在那儿，呆了好久好久。</span></p><br><p><span>蒲熠星知道自己错了。没有一段噩梦是可以被轻易抹去的，他的本能，他的神经，依然会清晰地记得曾发生过的每一幕。探入她裙底的大手，带着恶心的烟酒味、蹭在她脸上的胡茬。午夜的钟声敲响的时候，她麻木地拖着自己的尸体，一步一步地走上楼梯，她亲手把那具残破不堪的躯体裹进破布，亲耳听到过去的一切轰然坠落的巨响。她天真地以为那是噩梦结束的钟声，杀死那具身体，就能从一切中解脱。</span></p><p><span>可是她错了。哪怕她变成男人，哪怕她现在是蒲熠星不再是郝妹妹，他依然极度恐惧被人触碰，无法忍受被狭小空间幽闭的感觉。儿歌，兔子，糖果……一切的一切都会触动她敏感的神经，令她反复想起人生中最黑暗的那几年。他有时会想，自己做的这一切是不是真的是徒劳的。拼尽一切见到了光，可这光只是更加清楚地映照出，他将永远身处无可逃脱的深渊。</span></p><p><span>他想错的另一件事是，郭文韬并非那么容易挫败的人。一次表白失败，他没有恼羞成怒地拉黑他跟他断绝关系，反而如往常一样，陪在他的身边，让他不安慌乱，却无法拒绝。</span></p><p><span>终于有一次他彻底爆发，他情绪激动语无伦次地冲他大喊大叫，让他滚远点不要再跟着自己，却又同时抑制不住地泪流满面。他喜欢他，贪恋他的陪伴，多么希望他能永远永远地留在自己身边——可时不时造访回忆的狰狞过往足以掐灭一切幻想的微弱火苗，他不敢再被爱，也早已不配去爱别人。</span></p><p><span>“可是我喜欢你呀。”单纯懵懂的男生语气中带着几分委屈，双手猫爪子一样不安地半蜷在袖口，小小声地为自己辩解道。蒲熠星看着他，男孩的爱像阳光下的玻璃一样澄净通透，他忽然涌上一股怒气来——那大概是经年累月的折磨与悲苦酿成的怒气，他想狠狠砸碎他的爱，砸得这块玻璃粉碎崩裂，化为齑粉。凭什么你可以如此单纯天真地度过一生，凭什么我要独自吞噬黑暗示你们以阳光的笑容，这世界上只有一种东西能让人平等那就是痛苦，你说你爱我，那么敢不敢跟我一起下地狱。</span></p><p><span>他看着对方猫一样地瞪大了眼睛、瞳孔收缩，近乎残忍地品尝着对方此时的惊恐、无措。他竹筒倒豆子般把自己的一切全都告解，说到兴奋处甚至双手都在激动发抖——他杀死那个男人的那一刻，一下一下地把铁条刺进他的五脏六腑，眼看着血沫从他格格**的嘴角溢出，眼珠子突兀地瞪得老大。那是他一生离解脱最近的时候，那一刻他几乎以为自己已经要破开地狱的大门，下一秒就能重获新生——然而现实是那大门后是地狱的第十九层，无数恶鬼猖狂大笑将他拉入更深的黑沼，唯有烈火熔岩焚化灵魂，才是唯一的解脱。</span></p><p><span>“你看，你爱上的就是这么个人。”说完这长长的一段，蒲熠星轻蔑又凉薄地挑起唇角笑了一下，不知在笑他的爱，还是在笑他自己。原来这世上不止我如此愚蠢，自困围城，多一个人为我痛苦，我应该很高兴。</span></p><p><span>郭文韬呆呆地愣了很久，最终一言不发地低着头默默离开了。</span></p><p><span>蒲熠星看着他跌跌撞撞的背影，如胜利者般咯咯娇笑起来，越笑越收不住，越笑越放肆张狂，笑得牙齿磕在嘴唇上满口是血，凄厉的笑声盘旋回荡在空旷的房间，当年被恶鬼分食的柔弱羔羊终成嗜血艳鬼，明媚人间也一如地狱。</span></p><br><p><span>今冬的第一场雪落下来的时候，他又见到了郭文韬。</span></p><p><span>消瘦的男孩抱着一大捧红玫瑰，比初次跟他表白时那那一捧还要大，要大好多。蒲熠星看见他，下意识顿住了脚步，心尖狠狠颤了一下。两个月没见，他想对方应该是有了新的目标，新的爱情。而且这一次他明显更笃定，更欣喜，他迈着轻快的步子，踏着薄薄的积雪，向这边走过来。</span></p><p><span>蒲熠星低下头，下意识把冷冰冰的双手揣进兜里，低头把脸往领子里缩了缩，打算体面地扮演一个普通的过客。</span></p><p><span>“砰——”他撞在一大束玫瑰花上，香气呛得他皱着脸打了个大大的喷嚏，晕头转向地揉着鼻子缓了一会儿，才看清了堵在自己面前的这个人。</span></p><p><span>“走路不看路的？”他心虚地捂了鼻子，皱着眉错了错身子刚想快步走过去，那一大束玫瑰却如影随形地再次堵在他面前。</span></p><p><span>“我喜欢你。”男孩的声音还是那样糯糯的，轻飘飘的，细声细气，一双纯黑的眸子却眨得无比认真。</span></p><p><span>蒲熠星只觉得自己的心脏突然烦躁地狂跳起来，他把头偏到一边，皱起眉来：“我跟你说过……”</span></p><p><span>“我知道！但那不是你的错！”</span></p><p><span>“可是我讨厌男人！我讨厌任何人！我不能接受任何身体接触所有接触都让我觉得恶心！”蒲熠星大声打断他的抢白，双手在大衣兜里几乎把掌心掐出血印，“这样你也无所谓吗！”</span></p><p><span>郭文韬被他吼得愣了一下，下意识后退了半步。然而他随即坚定地摇摇头，道：“我可以。”</span></p><p><span>“你不喜欢我就不碰你。”</span></p><p><span>“你不能接受的事情，我不会让任何人再有机会对你做。”</span></p><p><span>“我可以不跟你睡在同一张床上，不跟你亲吻，不要结婚，不要孩子……”</span></p><p><span>男孩的声音颤抖，耳朵却早已烧成热腾腾的红色：“但是……我想陪在你身边。”</span></p><br><p><span>蒲熠星痛恨自己，这么多年，有些事情还是无法拒绝。</span></p><p><span>他不明白自己为什么会无言以对，不明白自己经历了这么多之后，明明有更尖刻伤人的语言能分分钟刺得对面的人遍体鳞伤、落荒而逃，却为什么不用，为什么还是会贪恋这一点点不切实际的可能。</span></p><p><span>蒲熠星忽然意识到自己又把事情想错了。他以为自己已经彻底丧失了感性，以为只要心坚如铁就不再需要救赎，但他没想到自己骨子里仍然住着那个软弱的、瑟瑟发抖的小动物，一点温暖的火光就足以让他迷茫动摇。</span></p><p><span>他住进了郭文韬的家里。</span></p><p><span>男孩对他很好，让他睡在主卧软和的大床上，给他换了全套的纯棉被单。知道他不会用厨房，于是每天午休时也加班加点地工作，就为了早点下班回来给他做饭。他知道他喜欢数学，给他买了好多的书和游戏让他玩儿。蒲熠星再迟钝也能感受到这人是真的喜欢自己的，是恨不得把整个世界的好东西都捧到他面前的，可他从来都不缺爱，也从来都不曾被爱救赎。</span></p><p><span>他不相信这个人对他毫无慾巜望，可对方掩饰得很好，过了很久，也就只有一次，他再度被噩梦惊醒的时候，听见了郭文韬房间里的响动。男孩躺在床上，闭着眼睛，嘴里很轻很轻地念叨着他的名字，左手在睡裤里快速动作着。蒲熠星站在门外，以一种冷漠得不似活人的姿态看着这一切。他不感动，只是觉得悲哀。</span></p><p><span>——为自己而悲哀。</span></p><p><span>这么多年他极度厌恶与性有关的一切。居住在这样的男人躯体里，他甚至连自己的勃巜起都不能忍受。每次早晨起来在裤子上发现那种痕迹，他都会恶心得想吐，强迫症般的用水一遍遍冲洗自己的身体。他永远都不能忘记那些伤害，那些记忆里丑陋的器官，令人作呕的味道。可他现在自己就是个男人，活着的每一天都变成折磨和惩罚。</span></p><p><span>他一声不吭地回到了自己的卧室，蜷在床头披着被子，枯坐到天明。转天白天，他很平静地跟郭文韬提出了分手，理由是，“你应该有更好的生活。”</span></p><p><span>凡人不应该尝试去拯救地狱爬出来的恶鬼，他们只会被恶鬼拖着，一同堕入地狱。蒲熠星并不承认这意味着他对他产生了什么特殊的情感，也许只是潜藏在他内心深处最后一点点属于人类的良心而已，他自己已经被爱毁掉，不想再毁掉另一个人的人生。</span></p><p><span>郭文韬放下手中的碗，又像当初那样，委屈又困惑地看着他。</span></p><p><span>“……我喜欢你呀。”他也说不出什么长篇大论的道理，只能小声地，干干巴巴地把这句话又重复了一遍。</span></p><p><span>蒲熠星疲惫地深深吸气，气得几乎要笑出来：“为什么？”</span></p><p><span>郭文韬眨眨眼睛，底气又少了几分似的小声嘀咕道：“这个……人，他……他喜欢一个人……是没有为什么的嘛……”</span></p><br><p><span>在郭文韬的皱皱巴巴加装傻充愣下，蒲熠星对于“分手”一事也没再坚持，两人继续这么住着。</span></p><p><span>天天窝在家打游戏的他，因为足够聪明，很快就成了小有名气的玩家，也在线上认识了一些朋友。</span></p><p><span>这之后他学着别人成为了一名游戏主播，线上的虚拟世界给了他一定的安全感，当他戴上耳麦沉浸在解谜和战争中的时候，那些一直困扰他、阴魂不散的记忆也渐渐能暂时消退。</span></p><p><span>郭文韬对他一如既往的好，哪怕工作再忙，即使把电脑带回家来加班到深夜，也会坚持在七点前回家。他知道他怕黑，怕空空荡荡的房子，因此再也不想让他独自一人去面对任何黑暗。</span></p><p><span>而有时候爱上一个人就在一瞬间。</span></p><p><span>那是一个再普通不过的周四夜晚，文韬买了他爱吃的牛腩和土豆回家。郭大厨先把肉放到锅里炖上，趁着这时候给土豆削皮，大概是动作有点急，不小心“哎呀”一声擦到了手指。郭文韬不以为意地拿纸巾用力按了按止血，蒲熠星却着急忙慌地站起来去找急救箱。男孩知道自己只是擦破点皮，连声说着不用不用，一抬头，那张清冷皎白的脸，已经靠在了很近很近的地方。</span></p><p><span>蒲熠星也愣住了。</span></p><p><span>那一瞬间是他们迄今为止离得最近的时候，一旁的珐琅锅里咕嘟咕嘟炖着美味的牛肉，然而在这霸道的香气中，蒲熠星依然能分辨出一丝郭文韬身上的清新皂香。他是干净的，柔软的，平凡的，蒲熠星愣愣地看着他，忽然觉得，他说得真对。</span></p><p><span>——喜欢一个人，是不需要理由的啊。</span></p><p><span>他忽然颤抖起来，偏过目光失魂落魄地出了厨房，坐在餐桌边，久久回不过神来。郭文韬忙于做菜，并没注意到他的异样。把饭菜端上餐桌时，蒲熠星又恢复了那古井无波般的冷峻漠然。</span></p><br><p><span>新年要到的时候，小有名气的游戏主播，粉丝已经要到六位数。</span></p><p><span>有些粉丝给他寄了新年礼物，多是耳机键盘一类的东西，蒲熠星没有拒绝，全都收下了。</span></p><p><span>然而某一天，他照例去驿站抱了几件快递回来，在门口一件一件地拆了，拆到最后一件，黑胶袋子里抖楞出一条紫色的裙子。</span></p><p><span>他被蛇咬了一样惊叫一声扔开那条裙子，跌跌撞撞地扑到镜子前，惊恐地摸着自己那张早已属于男人的脸。</span></p><p><span>他无比恐惧地蜷在墙角里，好半天才慢慢镇定下来，颤抖着，小心翼翼地又拿起了那条裙子。袋子里有粉丝附上的卡片，说，大概意思是，鉴于百万粉女装的好传统，提前给你准备好小裙子，预祝早日百万。</span></p><p><span>蒲熠星蹲在地上，愣愣地看着那条裙子。很可爱漂亮的款式，有精致的小花边，还配了双雪白的半腿袜。他闭上眼睛，关于“裙子”的种种记忆又如恶臭腐水般涌上，他狠狠地皱了眉，极为迅速地将那件裙子塞回快递盒子里想跟其他垃圾一起扔出去，可打开家门的一瞬间，他又忽然迈不出那一步。</span></p><p><span>如果是那个人，那么，结局会不会不一样。</span></p><p><span>他看着眼前昏暗幽深的楼道——在酒店的那些年里，她无数次像个老鼠一样，穿梭于那些不为人知的密道、密室。一阵过堂风刮过来，他冷得一哆嗦，下意识关上了门，屋子里温暖安定的气息再次将他拥抱，他忽然很想哭。</span></p><p><span>只是他现在已经流不出眼泪了。</span></p><br><p><span>跨年之夜，老板们难得做了回人，早早地放员工们回家过节。郭文韬高高兴兴地在超市买了吃的，还买了一小束花，提着好大一袋子东西回了家。</span></p><p><span>到家时蒲熠星的房门关着，他以为他在直播，便没去打扰他，只说了句“我回来了”，就拎着东西进了厨房。把各种食材分门别类地放好，郭文韬拿起那束花想找个花瓶给它插上，一回头，差点被吓了个跟头。</span></p><p><span>皮肤白皙的男孩，穿着条漂亮的紫色裙子，修长的腿被雪白的长袜包裹出完美的弧度，像猫咪伸出优雅圆润的爪子。</span></p><p><span>郭文韬全身上下只剩下双眼珠子还勉强能动。</span></p><p><span>蒲熠星背靠着餐桌，双手反撑着桌边，有些局促地挪动了一下双腿，带起裙摆跟着轻轻荡了荡。他垂着眼睛，努力使自己的声音听起来平静轻松：“好看吗？”</span></p><p><span>郭文韬把头点得像个全自动缝纫机。</span></p><p><span>仿佛是坚冰融化，聚在尖尖上的那滴水终于“啪嗒”滴了下来，蒲熠星忽然“扑哧”一声笑了出来。眼前的男孩明明是那么聪明的一个人，高考状元，竞赛拿过奖的那种，可此时却呆头呆脑的像只小笨鹅，看着他，红着耳朵，讷讷的什么也说不出来。</span></p><p><span>所以裙装的少年不自觉地直了直身子，看着他的眼睛，声音轻得不能再轻地教他道：</span></p><p><span>“那你抱抱我呀。”</span></p><p><span>男孩愣了三秒，把这轻飘飘的几个字翻来覆去地砸摸了好几遍，才终于彻底明白了对方在发出怎样的邀请。他下意识地双手在衣服上抓了抓蹭了蹭，小心翼翼地伸出胳膊，像试图拢住一团即将飘散的雾气一样，谨慎地、丝毫不敢用力地，把他拥在了怀里。</span></p><p><span>蒲熠星闭上了眼睛。</span></p><p><span>他缓缓地卸了全身的力气，任由自己软倒在对方的怀抱里，下巴抵上了他削瘦却坚实的肩膀。他抬起手臂，有些生涩地瑟缩了一下，却还是慢慢地顺着对方的衣摆，小心地，环上了男孩的腰。</span></p><p><span>他这一生从未被教过该如何拥抱，他不知道这样对不对，会不会弄巜疼他。</span></p><p><span>他能感到郭文韬在微微发抖，锋利的喉结不安地上下滚动，吞咽口水的声音就在他耳边清晰可闻。他似乎比他还要紧张害怕，心脏隔着层薄薄的肋骨，咚咚跳得像是要蹦出来。他整个人就像只拼命收起爪子和尖牙的大狼狗，试图用热烘烘的肚皮，温暖瑟缩多疑的小猫。</span></p><p><span>大狼狗是应该被奖励的。蒲熠星想。</span></p><p><span>他睁开眼睛，偏过头，用柔软的嘴唇在他锋利的颌角上落下一个轻轻的吻。这是他第一次亲吻别人，他不知道该怎么亲，于是只是贴上去碰了碰，男孩的皮肤有些发干，蹭得他薄薄的嘴唇有些酥麻的痒意。</span></p><p><span>郭文韬的呼吸声立时重了一倍，心脏也跳得整间屋子都能听见，更要命的是，第五肢诚实正直地弹了起来。</span></p><p><span>男孩被自己的过于迅速的反应吓了一跳，满脸通红地下意识往后躲了一步，生怕吓到主动的猫咪。</span></p><p><span>撤开一步后两人终于又四目相对，郭文韬慌慌张张不自然地遮住自己的某处，支吾着说要去洗个手。蒲熠星一把拉住了他，深深地吸了口气，鼓起勇气，猫爪一样秀气纤细的手覆上了那顶临时帐篷。郭文韬连忙拦他，却被他干脆抵在了餐桌边上。少年的眉眼深邃，此时却承载了少女的脉脉柔情，他轻轻揉着那里——那处他曾经无比痛恨、无比厌恶、让他一生被梦魇缠绕的丑恶器巜官。他看着他的眼睛，说，我愿意。</span></p><p><span>郭文韬闭上眼睛，在黑暗中坠入一片滚烫星河。</span></p><br><p><span>在午夜的钟声敲响前，蒲熠星时隔十数年，再一次被人掀起了自己漂亮的裙子。不同的是那时候是恶魔用魔爪将她撕裂，而这一次，天使虔诚地跪在他的脚边，仰着头，用最温暖柔软的地方，容纳了他的慾巜望。</span></p><p><span>十二下庄严洪亮的钟声响起，蒲熠星在人生的初次激烈中随着悠长钟声抑制不住地惶然颤抖，天使展开洁白宽大的羽翼，将地狱中的灵魂带上了天堂。</span></p><br><p><span>蒲熠星想错了很多事，但有一件是对的。</span></p><p><span>所谓重新开始只是不切实际的梦想，苦难之所以成为苦难，就是因为它发生过就永远发生过，不可能被任何手段抹去。</span></p><p><span>所以不需要重新开始，人生是要继续的。继续活着，继续被爱，哪怕被人伤害过也伤害过别人，哪怕你从未学过该如何亲密拥吻如何爱人，没关系，我来教给你，我们还有一生的时间来继续。</span></p><p><span>重要的是你要相信自己值得，值得漂亮的裙子，美味的糖果，值得新年的钟声和漫天烟花，值得我为你坠入星河。</span></p><p><span>平生万事，那堪回首。但好在，乌头马角，终相救。</span></p><p><span>—— END ——</span></p><br><h2 id='2020-12-14-食色系列2whisky-kitty'><span>2020-12-14 食色系列【2】Whisky Kitty</span></h2><ul><li><span>果然某些登西只有0次和无数次……我为什么写这玩意儿写那么快，我不对劲！！！</span></li><li><span>承接纬钧的上文，南北的设定是：猎雕老手蒲艺馨 x 单纯女高管郭雯桃。其实都双转了那么顺序就不重要了！</span></li><li><span>南纬同事设定。但我不明白为什么南纬一见面这个故事就从一个现实正剧270°大转弯到了欢乐沙雕赛道上……我说不出来我想不明白……</span></li></ul><br><p><span>正文： </span></p><p><span>CBD的摩天高楼上，一个紫发美人正大喇喇地把两条腿搁在办公桌上，人呢，就懒洋洋地窝在宽大的老板椅里；jio呢，就灵活地勾来动去。</span></p><p><span>“咣咣咣——”</span></p><p><span>这敲门声就能知道是哪个瓜皮来了。蒲艺馨连忙兵荒马乱地坐好反扣手机消消乐晃晃鼠标解除屏保调出那个一上午也没看完的报表，然后清清嗓子若无其事地说了声“请进”，周珺纬一阵风似的进来把五个文件夹往她桌上一拍：“完事儿了，你审吧，下午我有事儿不加班啊要改的赶紧告诉我。”</span></p><p><span>蒲艺馨迷茫地虚着高度近视的猫猫眼，在她如风般消失前赶紧问了一句：“你下班干嘛去？”</span></p><p><span>“跟老同学吃饭，怎么了？”</span></p><p><span>“你前天就说跟老同学吃饭，又吃？你有几个老同学？？？”</span></p><p><span>“就那一个啊。”周珺纬看她穷追不舍，不耐烦地转过身来叉腰道：“你几个意思？为蒲猹事业添砖加瓦？”</span></p><p><span>“哎哟，我就随口一问嘛，zou珺纬最近好凶的哦。”紫发妹妹没好气地瞪了她一眼，阴阳怪气地持续发问：“你那同学男的女的啊？干什么工作的？今年多大？”</span></p><p><span>“……女的，没工作，多大……36D吧？”</span></p><p><span>腰细腿长肤白貌美但偏偏在这一项上保A争B的艺馨妹妹感觉受到了污辱，怒摔鼠标道：“老娘问年龄多大！！！”</span></p><p><span>“你问那么多干嘛都告诉你了是女的！”周珺纬被问毛了似的，皱皱鼻子怼她道：“老老实实钓你的男人去——对了不许像上次一样钓完留我的电话号码！！！”</span></p><p><span>“妈妈是怕你三十好几的人了嫁不出去孤独终老这才给你精挑细选好看听话啥大啥好的男人的！”蒲艺馨苦口婆心，痛心疾首：“周珺纬你不要不知好歹！”</span></p><p><span>“我谢谢你！那些男人还是你这个泡泡面都化不开调料的人留着自己用吧！”周美人霸气甩下一句，刚要走又意识到什么似的退了回来：“你今天晚上是不是有局？”</span></p><p><span>蒲艺馨撩撩眼皮皮笑肉不笑：“太感动了您还记得我这点事儿！”</span></p><p><span>周珺纬有些尴尬地咳了一声，摸摸自己打高光打到发光的鼻子尖：“那……我今晚可能没法接你了哦。”</span></p><p><span>紫发美人冷笑一声翻翻白眼：“算了，本来也没指望你。我就老办法，装醉水遁吧。”</span></p><br><p><span>郭雯桃所厌恶的东西TOP5里，应酬局绝对能占4.5个位置。</span></p><p><span>不知道这种恶心的风气是怎么带起来的，谈生意不好好分析数据比较方案，而是比谁家喝酒喝得多。是以郭雯桃从刚入行的时候就拒绝一切形式的局，为此甚至两度为这事儿跳槽，反正她有高考理科状元的脑子和名校双学位毕业的招牌，猎头们永远都在她门口拿着爱的号码牌。</span></p><p><span>今天的情况有点特殊。原定要出席今晚酒局的人胃溃疡住院了，而这个单子牵扯的东西比较多，需要个有经验说了算的人去坐镇。况且对家公司也虎视眈眈想从他们嘴里抢走这块肥肉，因此老板把这位性子清冷的美女高管叫到了办公室，好话说尽，劝她去帮忙顶一下。</span></p><p><span>郭雯桃此次没有喝酒的任务，应酬说话都是另外两个同事的活儿，她就是级别够高，有些条件谈着谈着可以当场拍板决定。因此她早早地拎着自己的笔记本到了酒桌，坐在一边处理邮件，一身低调的西装，鼻梁上一副斯斯文文的眼镜，进进出出的人都以为这只是谁带来的助理或秘书。</span></p><p><span>于是开始的时候也没有人邀请她上桌，她靠墙坐在一边，刚好坐在一个紫发美人的后面。又于是她清楚地看到了美人身边的两个男人是如何借着酒劲儿对她毛手毛脚的。她皱了皱眉，本着不想生事的态度低下了头，可余光仍然能瞟到晃来晃去的咸居手，“不能喝了”的呼声也源源不断地灌进耳朵。</span></p><p><span>郭雯桃暗暗握紧了拳头。</span></p><br><p><span>蒲艺馨当然不是第一天周旋于这样的场合，况且她那啥过的男人比眼前这盘避风塘炒蟹里放的蒜蓉都多。可即使是这样，被这些油腻老哥包围触碰的感觉依然让她觉得不适。以往的做法是喝得差不多了周珺纬会来找个由头把她叫走，换个人来顶。可是像今天这样，周珺纬有事来不了的情况，就只能靠她自己的演技了。</span></p><p><span>七八杯白的下肚，蒲艺馨开始了她的表演。</span></p><p><span>东倒西歪眼神迷离只是基本功，一边说喝不下了一边无力推拒送到嘴边的酒，再借咳嗽全都吐到袖子上。这时候再颠三倒四嘟嘟囔囔地跟人谈谈条件，撒撒娇，最后眉头一皱干呕一声跌跌撞撞地冲进洗手间，趁所有人不注意时悄悄溜走……</span></p><p><span>蒲艺馨，年纪轻轻，老影后了，这套活儿下来屡战屡胜从来没有人找过麻烦。</span></p><p><span>然而今天这车翻得猝不及防。</span></p><p><span>在她第二次可怜兮兮地说“喝不下”的时候，眼前突然闪出来一条白皙纤细的手臂，一把钳住了递酒过来的肥腻胖手。“她说喝不下，你们聋了？”低沉清冷的中性女声在头顶响起，方才还热闹非凡的酒桌一下子杯停盏停鸦雀无声，全都看向她们这边，蒲艺馨也愣住了，惊疑不定地翻着大猫眼往上看了一眼，就看见个小尖下巴，和比镜框还厚的眼镜片……</span></p><p><span>“哎，你算什么——嗷！！！！”</span></p><p><span>另一边的男人刚要开口，被郭雯桃看都没看抬手抓住后脑勺“咣”地一声就摁进了面前的酸辣汤里。蒲艺馨一看这情形眼一翻头一倒果断装醉，果然下一秒刚刚要灌他酒的男人就被那杯高度数白酒泼了一脸，嚎叫着满屋蹦跶，语言贫瘠地反复骂着那几句不堪入耳的话。</span></p><p><span>“这生意我们不做了，跟你们这样的人怕也做不好什么生意。”郭雯桃看向自家的两个同事，做了个让他们撤的手势，冷冷道：“老板问起来让他找我。我先走了。”</span></p><p><span>说着她一手架起九曲十八弯喝成一滩流体的紫发白猫，不由分说地把她直接拖出了包厢。蒲艺馨心里一通骂街——当然不是因为她搅黄了局子，是因为她手臂太瘦硌得她骨头疼。蒲艺馨此时终于不得不承认周珺纬那个珠穆朗玛峰一样的那啥还是很值得羡慕的。好不容易被人拖死猫一样拖到了**场，艺馨妹妹终于无需再演，“刷”地一下支棱起来，一撩头发大大喘了口气，看着郭雯桃，脑子在“谢谢”和“多管闲事”之间晃悠了几个来回，最后憋出一句：“你……挺虎啊！”</span></p><p><span>智商卓越武力爆表但是依然单纯如妹妹的女高管惊讶地睁大了眼睛：“你没醉啊？”</span></p><p><span>蒲艺馨方才还没觉得什么，但是此时面对面，离得近了，这人浓密卷翘的睫毛、深琥珀色的瞳仁和微微翘起的猫唇也离得近了，让她不知为什么就……</span></p><p><span>麻。</span></p><p><span>“其实有点。”蒲艺馨“叭”地一声斜斜地靠上了**场柱子，整个人像一条刚挤出来的香芋味炼乳。</span></p><p><span>“到底醉没醉啊？”郭雯桃满脸问号地蹙着好看的眉毛眨着眼上上下下左左右右地观察着她，还问：“喝醉了要怎么办来着？呃你等等啊我搜一下……”</span></p><p><span>蒲艺馨忽然觉得呼吸困难——ze个人怎么能……</span></p><p><span>这么可爱？！</span></p><p><span>阅男无数flcx的艺馨妹妹第一次有种要栽的预感，尤其是在默念了十遍“我是直的我是直的我是直的”后，再看这个古板严肃的黑长直姐姐依然觉得可爱得要了亲命——蒲艺馨觉得自己可能要非弹性形变了。那边还在焦头烂额地在不靠谱的馊索引擎上找着更不靠谱的答案，“醉酒后可饮入适量糖水……哪儿有糖水啊？”“啥？米汤？哇这个更难找吧？哪有人卖米汤的……”蒲艺馨靠在柱子上，默默地看着他，等到花儿都谢了，呵欠都打了八个了，才慢吞吞地提议道：“要不，你把我送回家吧。”</span></p><p><span>“哦，好。”郭雯桃对这个力所能及的解决方案很满意，揣起手机问：“你家在哪儿？”</span></p><p><span>蒲艺馨盯着她，清澈见底的眼睛眨巴眨巴，又几不可见地骨碌碌转了两圈，突然嘴巴一咧露出她从周珺纬那儿学来的憨憨傻笑：“忘了！”</span></p><p><span>“……啊？”郭雯桃开了车门都打算输导航了，被她这一下弄了个措手不及，“那……”</span></p><p><span>喝醉了的傻猫猫真诚柔弱地盯着她。</span></p><p><span>“那……带你回……我家？”战略部大佬莫名有种自己被战略了的感觉，有些犹豫地问。</span></p><p><span>“好呀好呀去你家！”傻白猫又咧嘴一笑，开心地拍手手鼓掌掌，心说这一幕要是给周珺纬看到估计她能当场有喜。</span></p><p><span>“呃……那上来吧。”郭雯桃觉得自己既然拯救了落难少女就得对人家负责到底，打开了自己副驾驶的车门。</span></p><br><p><span>郭雯桃在厨房笨手笨脚地熬米汤的时候，蒲艺馨在阳台上接到了周珺纬的电话。</span></p><p><span>“我刚完事儿……你那边怎么样？”——这个货不知道去干了啥，感觉像刚参加完铁人三项。</span></p><p><span>“说起来你可能不信。”基本已经完全醒酒的艺馨妹妹得意冷笑着，压低声音道：“我现在在对家公司管理层的家里。”</span></p><p><span>周珺纬那边细跟高跟一个冒火星子的刹停：“你被绑架了？！”</span></p><p><span>蒲艺馨：“……为什么你的语气中充满愉悦？”</span></p><p><span>“好的，看来是没有。”周珺纬的语气中完全听不出幸灾乐祸，“说吧你又图人家什么了？图人家那啥大还是图人家那啥好？”</span></p><p><span>蒲艺馨靠在阳台栏杆上，看着玻璃隔断门里面，收拾得井井有条一尘不染、却除了黑白灰外，很难找出第三个颜色的单身公寓。</span></p><p><span>“周珺纬。”她严肃地，悲伤地，郑重其事地叫了一遍对方的全名。</span></p><p><span>“怎么了？”那边直觉敏锐的女人察觉到她不寻常的情绪，连忙蹙起眉头关切地问。</span></p><p><span>蒲艺馨深吸一口气。</span></p><p><span>“我。弯。了。”</span></p><br><p><span>—— TBC ——</span></p><br><p><span>真诚建议大家，想写正经的东西，就不要让南纬见面（忧郁望天.jpg）</span></p><p><span>为什么给蒲蒲安ze个人设是因为那个著名的“蒲熠星特别flcx”……</span></p><p><span>为什么给桃桃安ze个人设是因为昨天的掰手腕实在是……</span></p><p><span>咳，总而言之</span></p><p><span>南纬又要分享购物清单了（咦我为什么要说又？）</span></p></div></div>
+
+<script>(function(){var e=document.body.parentElement,t=[],n=null,i=document.body.classList.contains("typora-export-collapse-outline"),r=function(e,t,n){document.addEventListener(e,function(e){if(!e.defaultPrevented)for(var i=e.target;i&&i!=this;i=i.parentNode)if(i.matches(t)){!1===n.call(i,e)&&(e.preventDefault(),e.stopPropagation());break}},!1)};function o(){return e.scrollTop}r("click",".outline-expander",function(e){var t=this.closest(".outline-item-wrapper").classList;return t.contains("outline-item-open")?t.remove("outline-item-open"):t.add("outline-item-open"),d(),!1}),r("click",".outline-item",function(e){var t=this.querySelector(".outline-label");if(location.hash="#"+t.getAttribute("href"),i){var n=this.closest(".outline-item-wrapper").classList;n.contains("outline-item-open")||n.add("outline-item-open"),c(),n.add("outline-item-active")}});var a,s,l=function(){var e=o();n=null;for(var i=0;i<t.length&&t[i][1]-e<60;i++)n=t[i]},c=function(){document.querySelectorAll(".outline-item-active").forEach(e=>e.classList.remove("outline-item-active")),document.querySelectorAll(".outline-item-single.outline-item-open").forEach(e=>e.classList.remove("outline-item-open"))},d=function(){if(n){c();var e=document.querySelector('.outline-label[href="#'+(CSS.escape?CSS.escape(n[0]):n[0])+'"]');if(e)if(i){var t=e.closest(".outline-item-open>ul>.outline-item-wrapper");if(t)t.classList.add("outline-item-active");else{for(var r=(e=e.closest(".outline-item-wrapper")).parentElement.closest(".outline-item-wrapper");r;)r=(e=r).parentElement.closest(".outline-item-wrapper");e.classList.add("outline-item-active")}}else e.closest(".outline-item-wrapper").classList.add("outline-item-active")}};window.addEventListener("scroll",function(e){a&&clearTimeout(a),a=setTimeout(function(){l(),d()},300)});var u=function(){s=setTimeout(function(){!function(){t=[];var e=o();document.querySelector("#write").querySelectorAll("h1, h2, h3, h4, h5, h6").forEach(n=>{var i=n.getAttribute("id");t.push([i,e+n.getBoundingClientRect().y])})}(),l(),d()},300)};window.addEventListener("resize",function(e){s&&clearTimeout(s),u()}),u()})();</script></body>
+</html>
